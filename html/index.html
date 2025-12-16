@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ХАРЬКОВСКИЙ ХАРДКОР</title>
     <style>
-        body { background: #000; color: #fff; font-family: 'Oswald', sans-serif; text-align: center; margin: 0; padding: 20px; }
+        body { background: #000; color: #fff; font-family: sans-serif; text-align: center; margin: 0; padding: 20px; }
         header { border-bottom: 2px solid #f00; padding: 20px; margin-bottom: 40px; }
         .logo { color: #f00; font-size: 32px; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; }
         .catalog { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .card { border: 1px solid #333; padding: 20px; width: 280px; background: #111; }
+        .card { border: 1px solid #333; padding: 20px; width: 280px; background: #111; border-radius: 8px; }
         .price { color: #f00; font-size: 24px; font-weight: bold; }
-        button { background: #f00; color: #fff; border: none; padding: 15px 30px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; }
+        button { background: #f00; color: #fff; border: none; padding: 15px 30px; cursor: pointer; font-weight: bold; width: 100%; border-radius: 4px; }
         button:hover { background: #c00; }
-        form { max-width: 400px; margin: 50px auto; display: flex; flex-direction: column; gap: 15px; background: #111; padding: 30px; border: 1px solid #333; }
-        input { padding: 15px; background: #222; border: 1px solid #444; color: #fff; }
+        form { max-width: 400px; margin: 50px auto; display: flex; flex-direction: column; gap: 15px; background: #111; padding: 30px; border: 1px solid #333; border-radius: 8px; }
+        input { padding: 15px; background: #222; border: 1px solid #444; color: #fff; border-radius: 4px; }
     </style>
 </head>
 <body>
@@ -24,22 +24,22 @@
         <div class="card">
             <h3>Футболка «ХАРЬКОВ»</h3>
             <p class="price">1 200 ₴</p>
-            <button onclick="document.getElementById('itemName').value='Футболка ХАРЬКОВ'; document.getElementById('order').scrollIntoView();">В КОРЗИНУ</button>
+            <button onclick="document.getElementById('itemName').value='Футболка ХАРЬКОВ'; document.getElementById('orderForm').scrollIntoView({behavior: 'smooth'});">В КОРЗИНУ</button>
         </div>
     </section>
 
-    <form id="order">
+    <form id="orderForm">
         <h2>ОФОРМИТЬ ЗАКАЗ</h2>
         <input type="text" id="itemName" placeholder="Товар" readonly required>
         <input type="text" placeholder="Ваше имя" required>
         <input type="tel" placeholder="Номер телефона" required>
-        <button type="submit">ЗАКАЗАТЬ</button>
+        <button type="submit">ПОДТВЕРДИТЬ</button>
     </form>
 
     <script>
-        document.getElementById('order').onsubmit = function(e) {
+        document.getElementById('orderForm').onsubmit = function(e) {
             e.preventDefault();
-            alert('Заказ принят! Мы свяжемся с вами.');
+            alert('Заказ принят! (Настройте Telegram Bot ID в коде для получения уведомлений)');
         };
     </script>
 </body>
