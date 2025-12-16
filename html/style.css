@@ -1,0 +1,171 @@
+body {
+    font-family: 'Oswald', sans-serif;
+    margin: 0;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+header {
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #000;
+    border-bottom: 2px solid #ff0000;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo { font-weight: 700; font-size: 26px; letter-spacing: 1px; color: #ff0000; }
+
+nav ul { list-style: none; display: flex; gap: 30px; margin: 0; }
+nav a { text-decoration: none; color: #fff; font-size: 14px; transition: 0.3s; }
+nav a:hover { color: #ff0000; }
+
+.hero {
+    height: 40vh;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero h1 { font-size: 60px; margin: 0; letter-spacing: 5px; color: #fff; }
+
+#catalog { padding: 60px 5%; }
+#catalog h2 { text-align: center; font-size: 32px; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 40px; }
+
+.products {
+    display: flex;
+    justify-content: center;
+}
+
+.telegram-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #ff0000; /* Красный в стиле бренда */
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.telegram-button:hover {
+    transform: scale(1.05);
+    background-color: #cc0000;
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.5);
+}
+
+/* Пульсация для привлечения внимания */
+@keyframes pulse-red {
+    0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(255, 0, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+}
+
+.telegram-button {
+    animation: pulse-red 2s infinite;
+}
+
+/* Скрываем текст на маленьких экранах, оставляем только иконку */
+@media (max-width: 600px) {
+    .telegram-button span {
+        display: none;
+    }
+    .telegram-button {
+        padding: 15px;
+        border-radius: 50%;
+    }
+}
+
+.product-card {
+    max-width: 400px;
+    background: #111;
+    padding: 20px;
+    border: 1px solid #222;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.product-card:hover { border-color: #ff0000; }
+
+.product-img {
+    width: 100%;
+    height: 400px;
+    background: #1a1a1a;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product-img img { width: 100%; height: auto; }
+
+.price { font-size: 24px; color: #ff0000; font-weight: bold; }
+
+.order-section {
+    padding: 80px 5%;
+    background: #000;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input {
+    padding: 15px;
+    background: #111;
+    border: 1px solid #333;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+}
+
+input:focus { outline: 1px solid #ff0000; }
+
+button {
+    padding: 18px;
+    background: #ff0000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+button:hover { background: #cc0000; transform: translateY(-3px); }
+3. script.js (Логика)
+Скрипт для работы формы.
+
+JavaScript
+
+function selectProduct(name) {
+    const itemInput = document.getElementById('itemName');
+    itemInput.value = name;
+    document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+}
+
+document.getElementById('orderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = this.querySelectorAll('input')[1].value;
+    alert(`ЗАКАЗ ПРИНЯТ!\n\n${name}, мы свяжемся с вами для уточнения деталей по товару: ${document.getElementById('itemName').value}`);
+    this.reset();
+});
