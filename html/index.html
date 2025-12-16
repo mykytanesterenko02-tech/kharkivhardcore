@@ -3,57 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ХАРЬКОВСКИЙ ХАРДКОР — Официальный магазин</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <title>ХАРЬКОВСКИЙ ХАРДКОР</title>
+    <style>
+        body { background: #000; color: #fff; font-family: 'Oswald', sans-serif; text-align: center; margin: 0; padding: 20px; }
+        header { border-bottom: 2px solid #f00; padding: 20px; margin-bottom: 40px; }
+        .logo { color: #f00; font-size: 32px; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; }
+        .catalog { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .card { border: 1px solid #333; padding: 20px; width: 280px; background: #111; }
+        .price { color: #f00; font-size: 24px; font-weight: bold; }
+        button { background: #f00; color: #fff; border: none; padding: 15px 30px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; }
+        button:hover { background: #c00; }
+        form { max-width: 400px; margin: 50px auto; display: flex; flex-direction: column; gap: 15px; background: #111; padding: 30px; border: 1px solid #333; }
+        input { padding: 15px; background: #222; border: 1px solid #444; color: #fff; }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">ХАРЬКОВСКИЙ ХАРДКОР</div>
-            <ul>
-                <li><a href="#catalog">Каталог</a></li>
-                <li><a href="#order">Заказать</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <h1>ХАРЬКОВСКИЙ ХАРДКОР</h1>
-        <p>СТИЛЬ, РОЖДЕННЫЙ УЛИЦАМИ</p>
-    </section>
-
-    <main id="catalog">
-        <h2>Витрина</h2>
-        <div class="products">
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="t-shirt.png" alt="Футболка Харьковский Хардкор" onerror="this.style.display='none'">
-                </div>
-                <h3>Футболка «Харьковский Хардкор»</h3>
-                <p class="price">₴1000</p>
-		<p class="price">€20</p>
-                <button onclick="selectProduct('Футболка Харьковский Хардкор')">В корзину</button>
-            </div>
+    <header><div class="logo">ХАРЬКОВСКИЙ ХАРДКОР</div></header>
+    
+    <section class="catalog">
+        <div class="card">
+            <h3>Футболка «ХАРЬКОВ»</h3>
+            <p class="price">1 200 ₴</p>
+            <button onclick="document.getElementById('itemName').value='Футболка ХАРЬКОВ'; document.getElementById('order').scrollIntoView();">В КОРЗИНУ</button>
         </div>
-    </main>
-
-    <section id="order" class="order-section">
-        <h2>Оформить заказ</h2>
-        <form id="orderForm">
-            <input type="text" id="itemName" placeholder="Выбранный товар" readonly required>
-            <input type="text" placeholder="Ваше имя" required>
-            <input type="tel" placeholder="Как с вами связаться" required>
-            <button type="submit">ПОДТВЕРДИТЬ ЗАКАЗ</button>
-        </form>
     </section>
 
-    <script src="script.js"></script>
-    <a href="https://t.me/kharkivhardcoreshop" class="telegram-button" target="_blank">
-    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM16.64 8.8C16.49 10.38 15.84 14.17 15.51 15.93C15.37 16.67 15.1 16.92 14.84 16.95C14.26 17 13.82 16.57 13.26 16.2C12.38 15.62 11.88 15.26 11.03 14.7C10.05 14.05 10.68 13.69 11.24 13.11C11.39 12.96 13.93 10.65 13.98 10.44C13.99 10.41 13.99 10.33 13.95 10.29C13.9 10.25 13.84 10.26 13.79 10.27C13.73 10.28 12.79 10.91 10.97 12.14C10.7 12.32 10.46 12.41 10.25 12.41C10.01 12.4 9.56 12.27 9.22 12.16C8.81 12.02 8.48 11.95 8.51 11.72C8.53 11.6 8.69 11.47 9 11.33C10.89 10.51 12.16 10.01 12.81 9.74C14.66 8.98 15.05 8.85 15.3 8.85C15.35 8.85 15.47 8.86 15.57 8.94C15.65 9.01 15.68 9.1 15.69 9.19C15.7 9.28 15.7 9.49 15.68 9.68L16.64 8.8Z" fill="white"/>
-    </svg>
-    <span>Написать нам</span>
-</a>
+    <form id="order">
+        <h2>ОФОРМИТЬ ЗАКАЗ</h2>
+        <input type="text" id="itemName" placeholder="Товар" readonly required>
+        <input type="text" placeholder="Ваше имя" required>
+        <input type="tel" placeholder="Номер телефона" required>
+        <button type="submit">ЗАКАЗАТЬ</button>
+    </form>
+
+    <script>
+        document.getElementById('order').onsubmit = function(e) {
+            e.preventDefault();
+            alert('Заказ принят! Мы свяжемся с вами.');
+        };
+    </script>
 </body>
 </html>
